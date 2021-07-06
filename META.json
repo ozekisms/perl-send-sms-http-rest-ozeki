@@ -1,0 +1,7 @@
+{
+    "version" : "1.0.0",
+    "name"    : "Ozeki::Libs::Rest",
+    "author"  : "Ozeki Systems Kft.",
+    "abstract": "You can use this module to send SMS messages with the Ozeki SMS Gateway using Perl.",
+    "license" : "perl"
+}
