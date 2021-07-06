@@ -33,26 +33,68 @@ Install a HTTP API user
 To use the code you need to import the Ozeki::Libs::Rest sms library. This sms library is also included in this repository with it's full source code. After the library is imported with the using statement, you need to define the username, password and the api url. You can create the username and password when you install an HTTP API user in your Ozeki SMS Gateway system.
 The URL is the default http api URL to connect to your SMS gateway. If you run the SMS gateway on the same computer where your Pearl code is running, you can use 127.0.0.1 as the ip address. You need to change this if you install the sms gateway on a different computer (or mobile phone).
 
+## Installation
+
+To install the ozeki_libs_rest gem, you have to execute the following command:
+
+### Windows
+
+    $ perl Build.PL
+
+    $ ./Build
+
+    $ ./Build install
+    
+
+### Linux
+
+    $ perl Makefile.PL
+
+    $ make
+
+    $ make install
+
+## How to send a simple SMS message
+
+ To use the ozeki_libs_rest you have to create a Configuration object.
+
+```perl
+
+    my $configuration = new Configuration();
+
+    $configuration->{ username } = "username";
+
+    $configuration->{ password } = "password";
+
+    $configuration->{ apiurl } = "http://example.com/api";
+
 ```
-use Ozeki::Libs::Rest::Configuration;
-use Ozeki::Libs::Rest::MessageApi;
-use Ozeki::Libs::Rest::Message;
- 
-my $configuration = new Ozeki::Libs::Rest::Configuration();
-$configuration->{ Username } = "http_user";
-$configuration->{ Password } = "qwe123";
-$configuration->{ ApiUrl } = "http://127.0.0.1:9509/api";
- 
-my $msg = new Ozeki::Libs::Rest::Message();
-$msg->{ ToAddress } = "+36201111111";
-$msg->{ Text } = "Hello world!";
- 
-my $api = new Ozeki::Libs::Rest::MessageApi($configuration);
- 
-my $result = $api->Send($msg);
- 
-print($result->stringify);
+
+To initialize a Message object we have to use the following code:
+
+
+```perl
+
+    my $msg = new Message();
+
+    $msg->{ ToAddress } = "+36201111111";
+
+    $msg->{ Text } = "Hello world!";
+
 ```
+
+To send your message  we should create a MessageApi object.
+
+The MessageApi constructor takes only one parameter which is a configuration object.
+
+```perl
+
+    my $api = new MessageApi($configuration);
+
+    my $result = $api->Send(( $msg1 )); #We save the result into a variable
+    
+```
+
 
 ## Manual / API reference
 To get a better understanding of the above **SMS code sample**, it is a good
