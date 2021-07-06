@@ -10,7 +10,7 @@ It is also important to mention, that you have to run the code on a computer whe
 
 To install the ozeki_libs_rest gem, you have to execute the following command:
 
-# Windows
+### Windows
 
     $ perl Build.PL
 
@@ -19,7 +19,7 @@ To install the ozeki_libs_rest gem, you have to execute the following command:
     $ ./Build install
     
 
-# Linux
+### Linux
 
     $ perl Makefile.PL
 
