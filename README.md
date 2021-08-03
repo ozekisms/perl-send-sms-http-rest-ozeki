@@ -53,48 +53,60 @@ To install the Ozeki::Libs::Rest module, you have to use these commands.
     $ make
 
     $ sudo make install
-
-## How to send a simple SMS message
-
- In order to send SMS messages form Perl, you have to create a Configuration object.
-
-```perl
-
-    my $configuration = new Configuration();
-
-    $configuration->{ username } = "username";
-
-    $configuration->{ password } = "password";
-
-    $configuration->{ apiurl } = "http://example.com/api";
-
-```
-
-To initialize a Message object we have to use the following code:
-
-
-```perl
-
-    my $msg = new Message();
-
-    $msg->{ ToAddress } = "+36201111111";
-
-    $msg->{ Text } = "Hello world!";
-
-```
-
-To send your message  we should create a MessageApi object.
-
-The MessageApi constructor takes only one parameter which is a configuration object.
-
-```perl
-
-    my $api = new MessageApi($configuration);
-
-    my $result = $api->Send(( $msg1 )); #We save the result into a variable
     
+### How to use the Ozeki.Libs.Rest library
+
+In order to use the __Ozeki::Libs::Rest perl library__ in your own project, you need include its contents in your project:
+
+```perl
+use Ozeki::Libs::Rest::Configuration;
+use Ozeki::Libs::Rest::Message;
+use Ozeki::Libs::Rest::MessageApi;
+```
+When you imported these classes, you are ready to use them in your project, and start to send, mark, delete and receive SMS messages.
+
+#### Creating a Configuration
+
+To send your SMS message to the built in API of the __Ozeki SMS Gateway__, your client application needs to know the details of your __Gateway__ and the __http_user__.
+We can define a __Configuration__ instance with these lines of codes in Perl.
+
+```perl
+my $configuration = new Ozeki::Libs::Rest::Configuration();
+$configuration->{ Username } = "http_user";
+$configuration->{ Password } = "qwe123";
+$configuration->{ ApiUrl } = "http://127.0.0.1:9509/api";
 ```
 
+#### Creating a Message
+
+After you have initialized your configuration object you can continue by creating a Message object.
+A message object holds all the needed data for message what you would like to send.
+In Perl we create a __Message__ instance with the following lines of codes:
+
+```perl
+my $msg = new Ozeki::Libs::Rest::Message();
+$msg->{ ToAddress } = "+36201111111";
+$msg->{ Text } = "Hello world!";
+```
+
+#### Creating a MessageApi
+
+You can use the __MessageApi__ class of the __Ozeki.Libs.Rest library__ to create a __MessageApi__ object which has the methods to send, delete, mark and receive SMS messages from the Ozeki SMS Gateway.
+To create a __MessageApi__, you will need these lines of codes and a __Configuration__ instance.
+
+```perl
+my $api = new Ozeki::Libs::Rest::MessageApi($configuration);
+```
+
+After everything is ready you can begin with sending the previously created __Message__ object:
+
+```perl
+my $result = $api->Send($msg);
+
+print($result->stringify);
+```
+
+After you have done all the steps, you check the Ozeki SMS Gateway and you will see the message in the _Sent_ folder of the __http_user__.
 
 ## Manual / API reference
 To get a better understanding of the above **SMS code sample**, it is a good
