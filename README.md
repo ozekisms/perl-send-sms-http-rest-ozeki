@@ -56,7 +56,7 @@ To install the Ozeki::Libs::Rest module, you have to use these commands.
 
 ## How to send a simple SMS message
 
- To use the ozeki_libs_rest you have to create a Configuration object.
+ In order to send SMS messages form Perl, you have to create a Configuration object.
 
 ```perl
 
