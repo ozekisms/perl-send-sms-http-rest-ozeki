@@ -1,4 +1,3 @@
-//This is what happens when the repository gets updated
 use Ozeki::Libs::Rest::Configuration;
 use Ozeki::Libs::Rest::MessageApi;
 use Ozeki::Libs::Rest::Message;
