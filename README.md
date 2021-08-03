@@ -52,7 +52,7 @@ To install the ozeki_libs_rest gem, you have to execute the following command:
 
     $ make
 
-    $ make install
+    $ sudo make install
 
 ## How to send a simple SMS message
 
