@@ -35,7 +35,7 @@ The URL is the default http api URL to connect to your SMS gateway. If you run t
 
 ## Installation
 
-To install the ozeki_libs_rest gem, you have to execute the following command:
+To install the Ozeki::Libs::Rest module, you have to use these commands.
 
 ### Windows
 
