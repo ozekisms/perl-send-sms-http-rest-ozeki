@@ -1,5 +1,3 @@
-#This is a new content
-
 use Ozeki::Libs::Rest::Configuration;
 use Ozeki::Libs::Rest::MessageApi;
 use Ozeki::Libs::Rest::Message;
